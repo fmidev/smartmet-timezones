@@ -4,5 +4,6 @@ all: timezone.shz
 
 timezone.shz: timezone.shp
 	shapepack -v -a TZID -s timezone -o timezone.shz -W 40000
-	# shapepack -v -a TZID -s timezone -o test.shz -W 2000 -p test.png
 
+timezone.png:
+	shapepack -v -a TZID -s timezone -o /dev/null -W 800 -p timezone.png
