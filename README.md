@@ -1,3 +1,3 @@
 # SmartMet Server timezone files
 
-TODO.
+![Image of world timezones rendered by QGis](/images/timezone.png)
