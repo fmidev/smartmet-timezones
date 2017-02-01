@@ -19,8 +19,7 @@ csv:
 rpm:
 	@if [ -e $(SPEC).spec ]; \
 	then \
-	  tar -C ../ -cf $(rpmsourcedir)/$(LIB).tar $(LIB) ; \
-	  gzip -f $(rpmsourcedir)/$(LIB).tar ; \
+	  tar -czvf $(rpmsourcedir)/$(LIB).tar.gz --transform "s,^,$(LIB)/," * ; \
 	  TAR_OPTIONS=--wildcards rpmbuild -v -ta $(rpmsourcedir)/$(LIB).tar.gz ; \
 	else \
 	  echo $(SPEC).spec missing; \
