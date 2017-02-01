@@ -1,6 +1,7 @@
 #!/bin/sh
 
-head -n1 share/date_time_zonespec.csv
+# Header field
+echo '"ID","STD ABBR","STD NAME","DST ABBR","DST NAME","GMT offset","DST adjustment","DST Start Date rule","Start time","DST End date rule","End time"'
 
 # We ignore POSIX and leap-second files, Boost does not use them.
 
