@@ -1,9 +1,17 @@
 LIB = timezones
 SPEC = smartmet-${LIB}
 
-# rpm variables
+# Installation directories
 
-rpmsourcedir = /tmp/$(shell whoami)/rpmbuild
+ifeq ($(origin PREFIX), undefined)
+  PREFIX = /usr
+else
+  PREFIX = $(PREFIX)
+endif
+
+datadir = $(PREFIX)/share
+
+# rpm variables
 
 .PHONY: rpm
 
@@ -19,8 +27,9 @@ csv:
 rpm:
 	@if [ -e $(SPEC).spec ]; \
 	then \
-	  tar -czvf $(rpmsourcedir)/$(LIB).tar.gz --transform "s,^,$(LIB)/," * ; \
-	  TAR_OPTIONS=--wildcards rpmbuild -v -ta $(rpmsourcedir)/$(LIB).tar.gz ; \
+	  tar -czvf $(LIB).tar.gz --transform "s,^,$(LIB)/," * ; \
+	  TAR_OPTIONS=--wildcards rpmbuild -v -ta $(LIB).tar.gz ; \
+	  rm -f $(LIB).tar.gz; \
 	else \
 	  echo $(SPEC).spec missing; \
 	fi;
@@ -28,4 +37,4 @@ rpm:
 install:
 	mkdir -p $(datadir)/smartmet/$(LIB)
 	install -m 0644 share/date_time_zonespec.csv $(datadir)/smartmet/$(LIB)/
-	install -m 0440 share/timezone.shz           $(datadir)/smartmet/$(LIB)/
+	install -m 0644 share/timezone.shz           $(datadir)/smartmet/$(LIB)/
