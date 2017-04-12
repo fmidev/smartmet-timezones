@@ -1,6 +1,6 @@
 %define NAME timezones
 Name: smartmet-%{NAME}
-Version: 17.3.6
+Version: 17.4.12
 Release: 1%{?dist}.fmi
 Summary: SmartMet Timezone Database
 Group: System Environment/Base
@@ -33,6 +33,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/smartmet/%{NAME}/date_time_zonespec.csv
 
 %changelog
+* Wed Apr 12 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.4.12-1.fmi
+- Update to tzdata-2017b
+
 * Mon Mar  6 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.3.6-1.fmi
 - Fixed file modes
 
