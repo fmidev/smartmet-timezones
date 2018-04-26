@@ -9,6 +9,7 @@ URL: https://github.com/fmidev/smartmet-timezones
 Source0: %{NAME}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch: noarch
+BuildRequires: rpm-build
 BuildRequires: make
 BuildRequires: bash
 BuildRequires: perl
