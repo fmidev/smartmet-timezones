@@ -24,15 +24,11 @@ csv:
 	@PATH=${PWD}/bin:${PATH} create_date_time_zoneinfo > share/date_time_zonespec.csv
 	@echo Use git diff share/date_time_zonespec.csv to inspect differences
 
-rpm:
-	@if [ -e $(SPEC).spec ]; \
-	then \
-	  tar -czvf $(LIB).tar.gz --transform "s,^,$(LIB)/," * ; \
-	  TAR_OPTIONS=--wildcards rpmbuild -v -ta $(LIB).tar.gz ; \
-	  rm -f $(LIB).tar.gz; \
-	else \
-	  echo $(SPEC).spec missing; \
-	fi;
+rpm: $(SPEC).spec
+	rm -f $(SPEC).tar.gz # Clean a possible leftover from previous attempt
+	tar -czvf $(SPEC).tar.gz --transform "s,^,$(SPEC)/," *
+	rpmbuild -ta $(SPEC).tar.gz
+	rm -f $(SPEC).tar.gz
 
 install:
 	mkdir -p $(datadir)/smartmet/$(LIB)

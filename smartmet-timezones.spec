@@ -6,7 +6,7 @@ Summary: SmartMet Timezone Database
 Group: System Environment/Base
 License: MIT
 URL: https://github.com/fmidev/smartmet-timezones
-Source0: %{NAME}.tar.gz
+Source0: smartmet-%{NAME}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch: noarch
 BuildRequires: rpm-build
@@ -21,7 +21,7 @@ Timezone datafiles required by some Smartmet binaries.
 %prep
 rm -rf $RPM_BUILD_ROOT
 
-%setup -q -n %{NAME}
+%setup -q -n smartmet-%{NAME}
 
 %install
 %makeinstall
