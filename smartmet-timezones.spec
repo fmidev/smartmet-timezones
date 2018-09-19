@@ -13,6 +13,7 @@ BuildRequires: rpm-build
 BuildRequires: make
 BuildRequires: bash
 BuildRequires: perl
+#TestRequires: make
 Provides: %{NAME}
 
 %description
