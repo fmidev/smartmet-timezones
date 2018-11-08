@@ -34,3 +34,7 @@ install:
 	mkdir -p $(datadir)/smartmet/$(LIB)
 	install -m 0644 share/date_time_zonespec.csv $(datadir)/smartmet/$(LIB)/
 	install -m 0644 share/timezone.shz           $(datadir)/smartmet/$(LIB)/
+
+test:
+	@echo Nothing to test.	
+	@echo We should possibly test files for correctness.
