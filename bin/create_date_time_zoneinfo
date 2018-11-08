@@ -12,6 +12,8 @@ for tz in $(find /usr/share/zoneinfo \
     | grep -v "\.tab" \
     | grep -v posix \
     | grep -v right \
+    | grep -v leapseconds \
+    | grep -v tzdata \
     | sed -e 's|/usr/share/zoneinfo/||g' \
     | sort);
 do

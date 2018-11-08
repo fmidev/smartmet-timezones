@@ -1,6 +1,6 @@
 %define NAME timezones
 Name: smartmet-%{NAME}
-Version: 18.9.10
+Version: 18.11.8
 Release: 1%{?dist}.fmi
 Summary: SmartMet Timezone Database
 Group: System Environment/Base
@@ -35,6 +35,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/smartmet/%{NAME}/date_time_zonespec.csv
 
 %changelog
+* Thu Nov  8 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.11.8-1.fmi
+- Update to tzdata-2018g
+
 * Mon Sep 10 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.9.10-1.fmi
 - Improved accuracy for shapepack via shapetools improvements
 
