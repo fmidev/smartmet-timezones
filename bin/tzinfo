@@ -91,6 +91,8 @@ sub tzinfo
 
     my @dates;  # settings for current year
     my @indexes;
+
+    my $lastindex = -1;
     
     if ($timecnt)
     {
@@ -99,10 +101,12 @@ sub tzinfo
 
 	$data = &$tzchunk ($timecnt);
 	@ttindexes = unpack "C" x $timecnt, $data;
-	
+
 	for (my $i=0; $i<=$#ttimes; $i++)
 	{
 	    my $ruleyear = 1900 + (gmtime($ttimes[$i]))[5];
+
+	    $lastindex = $ttindexes[$i];
 	    
 	    if ($ruleyear == $year)
 	    {
@@ -162,7 +166,7 @@ sub tzinfo
 
     # for(my $i=0; $i<=$#dates; $i++)
     # {
-    #  print scalar gmtime ($dates[$i]), " => ", $indexes[$i], "\n";
+    #  print scalar gmtime ($dates[$i]), " => ", $indexes[$i], " ", $ttimes[$i], "\n";
     # }
 
     if ($#dates == 1)
@@ -213,8 +217,12 @@ sub tzinfo
     else
     {
 	# Use the last row if everything fails (Asia/Calcutta, Europe/Moscow)
-	my $lastindex = $#ttinfo;
-    
+
+	if($lastindex < 0)
+	{
+	    $lastindex = $#ttinfo;
+	}
+	
 	# ID, STD ABBR, STD NAME, DST ABBR, DST NAME, GMT offset, DST adjustment, Rule1, Time1, Rule2, Time2
 	# "Europe/Moscow","MSK","MSK","","","+03:00:00","+00:00:00","","","","+00:00:00"
 
@@ -234,6 +242,8 @@ sub tzinfo
 	
 	my $dstendrule = "";
 	my $dstendtime = "+00:00:00"; # no idea why the Boost.Date_time does this
+
+	# print "$gmtoffset $offset\n";
 	
 	print "\"$zone\",\"$zname\",\"$zname\",\"\",\"\",\"$gmtoffset\",\"$dstadjustment\",\"$dststartrule\",\"$dststarttime\",\"$dstendrule\",\"$dstendtime\"\n";
 	

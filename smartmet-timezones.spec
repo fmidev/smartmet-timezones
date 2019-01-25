@@ -1,6 +1,6 @@
 %define NAME timezones
 Name: smartmet-%{NAME}
-Version: 19.1.22
+Version: 19.1.25
 Release: 1%{?dist}.fmi
 Summary: SmartMet Timezone Database
 Group: System Environment/Base
@@ -36,6 +36,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/smartmet/%{NAME}/date_time_zonespec.csv
 
 %changelog
+* Fri Jan 25 2019 Mika Heiskanen <mika.heiskanen@fmi.fi> - 19.1.25-1.fmi
+- Fixed a bug in tzinfo which caused wrong output for example for Calcutta and Cairo
+
 * Tue Jan 22 2019 Mika Heiskanen <mika.heiskanen@fmi.fi> - 19.1.22-1.fmi
 - Update to tzdata-2018i
 
