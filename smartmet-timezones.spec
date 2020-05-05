@@ -1,6 +1,6 @@
 %define NAME timezones
 Name: smartmet-%{NAME}
-Version: 19.7.29
+Version: 20.5.5
 Release: 1%{?dist}.fmi
 Summary: SmartMet Timezone Database
 Group: System Environment/Base
@@ -36,6 +36,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/smartmet/%{NAME}/date_time_zonespec.csv
 
 %changelog
+* Tue May  5 2020 Mika Heiskanen <mika.heiskanen@fmi.fi> - 20.5.5-1.fmi
+- Update to tzdata-2020a
+
 * Mon Jul 29 2019 Mika Heiskanen <mika.heiskanen@fmi.fi> - 19.7.29-1.fmi
 - Update to tzdata-2019b
 
