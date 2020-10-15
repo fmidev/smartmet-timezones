@@ -1,6 +1,6 @@
 %define NAME timezones
 Name: smartmet-%{NAME}
-Version: 20.5.5
+Version: 20.10.15
 Release: 1%{?dist}.fmi
 Summary: SmartMet Timezone Database
 Group: System Environment/Base
@@ -36,6 +36,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/smartmet/%{NAME}/date_time_zonespec.csv
 
 %changelog
+* Thu Oct 15 2020 Mika Heiskanen <mika.heiskanen@fmi.fi> - 20.10.15-1.fmi
+- Replaced Antarctica/Mirny and Antarctica/Central with Etc/GMT versions since Linux Olson database does not recognize the names
+
 * Tue May  5 2020 Mika Heiskanen <mika.heiskanen@fmi.fi> - 20.5.5-1.fmi
 - Update to tzdata-2020a
 
