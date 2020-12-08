@@ -1,12 +1,12 @@
-%define NAME timezones
-Name: smartmet-%{NAME}
+%define SHORTNAME timezones
+Name: smartmet-%{SHORTNAME}
 Version: 20.10.28
 Release: 1%{?dist}.fmi
 Summary: SmartMet Timezone Database
 Group: System Environment/Base
 License: MIT
 URL: https://github.com/fmidev/smartmet-timezones
-Source0: smartmet-%{NAME}.tar.gz
+Source0: smartmet-%{SHORTNAME}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch: noarch
 BuildRequires: rpm-build
@@ -14,7 +14,7 @@ BuildRequires: make
 BuildRequires: bash
 BuildRequires: perl
 #TestRequires: make
-Provides: %{NAME}
+Provides: %{SHORTNAME}
 
 %description
 Timezone datafiles required by some Smartmet binaries.
@@ -22,7 +22,7 @@ Timezone datafiles required by some Smartmet binaries.
 %prep
 rm -rf $RPM_BUILD_ROOT
 
-%setup -q -n smartmet-%{NAME}
+%setup -q -n smartmet-%{SHORTNAME}
 
 %install
 %makeinstall
@@ -32,8 +32,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(0644,root,root,0775)
-%{_datadir}/smartmet/%{NAME}/timezone.shz
-%{_datadir}/smartmet/%{NAME}/date_time_zonespec.csv
+%{_datadir}/smartmet/%{SHORTNAME}/timezone.shz
+%{_datadir}/smartmet/%{SHORTNAME}/date_time_zonespec.csv
 
 %changelog
 * Wed Oct 28 2020 Mika Heiskanen <mika.heiskanen@fmi.fi> - 20.10.28-1.fmi
