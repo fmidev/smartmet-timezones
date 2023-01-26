@@ -1,6 +1,6 @@
 %define SHORTNAME timezones
 Name: smartmet-%{SHORTNAME}
-Version: 22.12.13
+Version: 23.1.26
 Release: 1%{?dist}.fmi
 Summary: SmartMet Timezone Database
 Group: System Environment/Base
@@ -36,6 +36,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/smartmet/%{SHORTNAME}/date_time_zonespec.csv
 
 %changelog
+* Thu Jan 26 2023 Mika Heiskanen <mika.heiskanen@fmi.fi> - 23.1.26-1.fmi
+- tzdata updated
+
 * Tue Dec 13 2022 Mika Heiskanen <mika.heiskanen@fmi.fi> - 22.12.13-1.fmi
 - Update to tzdata-2022g
 
