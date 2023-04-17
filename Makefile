@@ -21,7 +21,7 @@ all: csv
 
 csv: 
 	@echo "Updating share/date_time_zonespec.csv..."
-	@PATH=${PWD}/bin:${PATH} create_date_time_zoneinfo > share/date_time_zonespec.csv
+	@PATH=$(shell pwd)/bin:${PATH} create_date_time_zoneinfo > share/date_time_zonespec.csv
 	@echo Use git diff share/date_time_zonespec.csv to inspect differences
 
 rpm: $(SPEC).spec
