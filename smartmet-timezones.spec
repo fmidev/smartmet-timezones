@@ -1,7 +1,7 @@
 %define SHORTNAME timezones
 Name: smartmet-%{SHORTNAME}
-Version: 23.1.26
-Release: 1%{?dist}.fmi
+Version: 23.4.18
+Release: 1.fmi
 Summary: SmartMet Timezone Database
 Group: System Environment/Base
 License: MIT
@@ -36,6 +36,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/smartmet/%{SHORTNAME}/date_time_zonespec.csv
 
 %changelog
+* Tue Apr 18 2023 Mika Heiskanen <mika.heiskanen@fmi.fi> - 23.4.18-1.fmi
+- Removed architecture from RPM name since this is a noarch package
+
 * Thu Jan 26 2023 Mika Heiskanen <mika.heiskanen@fmi.fi> - 23.1.26-1.fmi
 - tzdata updated
 
