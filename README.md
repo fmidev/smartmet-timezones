@@ -1,4 +1,7 @@
 # SmartMet Server timezone files
+
+Part of [SmartMet Server](https://github.com/fmidev/smartmet-library-spine). See the [SmartMet Server documentation](https://github.com/fmidev/smartmet-library-spine) for an overview of the ecosystem.
+
 The SmartMet server requires two separate time zone files: date_time_zonespec.csv needed by the Boost.Date_Time library and timezone.shz, a packed 1 km resolution version of timezone.shp to resolve the timezone for any coordinate.
 
 # Boost.Date_Time timezone database
