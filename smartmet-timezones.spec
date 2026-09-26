@@ -14,9 +14,6 @@ BuildRequires: make
 BuildRequires: unzip
 #TestRequires: make
 Provides: %{SHORTNAME}
-# Older versions read the removed timezone.shz raster
-Conflicts: smartmet-library-macgyver < 26.9.26
-Conflicts: smartmet-qdtools < 26.9.26
 
 %description
 Global timezone polygons from timezone-boundary-builder, used to resolve the timezone of a coordinate.
