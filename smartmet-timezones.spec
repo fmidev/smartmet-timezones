@@ -1,8 +1,8 @@
 %define SHORTNAME timezones
 Name: smartmet-%{SHORTNAME}
-Version: 24.5.27
+Version: 26.9.26
 Release: 1.fmi
-Summary: SmartMet Timezone Database
+Summary: SmartMet timezone polygons
 Group: System Environment/Base
 License: MIT
 URL: https://github.com/fmidev/smartmet-timezones
@@ -11,13 +11,15 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch: noarch
 BuildRequires: rpm-build
 BuildRequires: make
-BuildRequires: bash
-BuildRequires: perl
+BuildRequires: unzip
 #TestRequires: make
 Provides: %{SHORTNAME}
+# Older versions read the removed timezone.shz raster
+Conflicts: smartmet-library-macgyver < 26.9.26
+Conflicts: smartmet-qdtools < 26.9.26
 
 %description
-Timezone datafiles required by some Smartmet binaries.
+Global timezone polygons from timezone-boundary-builder, used to resolve the timezone of a coordinate.
 
 %prep
 rm -rf $RPM_BUILD_ROOT
@@ -32,10 +34,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(0644,root,root,0775)
-%{_datadir}/smartmet/%{SHORTNAME}/timezone.shz
-%{_datadir}/smartmet/%{SHORTNAME}/date_time_zonespec.csv
+%{_datadir}/smartmet/%{SHORTNAME}/timezones-with-oceans.shp
+%{_datadir}/smartmet/%{SHORTNAME}/timezones-with-oceans.shx
+%{_datadir}/smartmet/%{SHORTNAME}/timezones-with-oceans.dbf
+%{_datadir}/smartmet/%{SHORTNAME}/timezones-with-oceans.prj
 
 %changelog
+* Sat Sep 26 2026 Mika Heiskanen <mika.heiskanen@fmi.fi> - 26.9.26-1.fmi
+- Replaced the 1 km timezone.shz raster with timezone-boundary-builder 2026d polygons (with oceans)
+- Removed date_time_zonespec.csv, Boost.Date_Time timezones are no longer used
 * Mon May 27 2024 Mika Heiskanen <mika.heiskanen@fmi.fi> - 24.5.27-1.fmi
 - Update to tzdata-2024a
 
